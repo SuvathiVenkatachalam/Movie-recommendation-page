@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendation App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:white;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color:white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        #recommendation {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: gold;
+            border: 1px solid gray;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Movie Recommendation App</h1>
+        <p>Find a movie recommendation:</p>
+        <form id="movieForm">
+            <label for="genre">Select a genre:</label>
+            <select id="genre">
+                <option value="action">Action</option>
+                <option value="comedy">Comedy</option>
+                <option value="drama">Drama</option>
+                <option value="horror">Horror</option>
+                <option value="sci-fi">Sci-Fi</option>
+            </select>
+            <button type="submit">Get Recommendation</button>
+        </form>
+        <div id="recommendation">
+            <h2>Recommended Movie:</h2>
+            <p id="recommendedMovie">Waiting for recommendation...</p>
+        </div>
+    </div>
+
+    <script>
+        
+        document.getElementById('movieForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            
+            var genre = document.getElementById('genre').value;
+
+            
+            var recommendation = getMovieRecommendation(genre);
+
+            
+            document.getElementById('recommendedMovie').textContent = recommendation;
+        });
+
+        
+        function getMovieRecommendation(genre) {
+            switch (genre) {
+                case 'action':
+                    return 'The Dark Knight';
+                case 'comedy':
+                    return 'Superbad';
+                case 'drama':
+                    return 'The Shawshank Redemption';
+                case 'horror':
+                    return 'The Conjuring';
+                case 'sci-fi':
+                    return 'Blade Runner 2049';
+                default:
+                    return 'No recommendation available';
+            }
+        }
+    </script>
+</body>
+</html>
